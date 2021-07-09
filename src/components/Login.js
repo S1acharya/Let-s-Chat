@@ -3,6 +3,7 @@ import {GoogleOutlined , FacebookOutlined} from '@ant-design/icons';
 
 // functional component
 const Login = () => {
+    // here we will have JSX for our form with our 2 buttons(facebook and google login)
     return (
         <div id = "login-page">
             <div id = "login-card">
@@ -20,7 +21,6 @@ const Login = () => {
             </div>
         </div>
     );
-// here we will have JSX for our form with our 2 buttons(facebook and google login)
 }
 
 export default Login;
