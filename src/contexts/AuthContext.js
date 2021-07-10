@@ -10,7 +10,7 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({children}) => {  //children is the props here
     // setting few useStates
     const [loading , setLoading] = useState(true);
-    const [user , setUser] = useState({});
+    const [user , setUser] = useState(null);
     const history = useHistory();
 
     // useEffect is a function that accepts another callback function as it's parameter and dependency array/list as it's second parameter
@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) => {  //children is the props here
         auth.onAuthStateChanged((user) => {
             setUser(user);
             setLoading(false);
-            history.push('/chats');            //this will renavigate us to our chat application
+            if(user) history.push('/chats');            //this will renavigate us to our chat application
         })
     } , [user , history]);              //when thing that we mentioned in dependency array/list changes , then whole callbackfunction gets called
 
@@ -28,8 +28,9 @@ export const AuthProvider = ({children}) => {  //children is the props here
 
     // return some JSX
     return (
+        /* if not loading then show the children*/
         <AuthContext.Provider value = {value}>
-            {!loading && children};          //if not loading then show the children
+            {!loading && children}       
         </AuthContext.Provider>
     );
 }
