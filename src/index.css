@@ -39,6 +39,16 @@
   cursor: pointer;
 }
 
+.center-tab {
+  position: absolute;
+  top: 16px;
+  bottom: 8px;
+  right: 550px;
+  font-size: 25px;
+  font-weight: 500;
+  color: white;
+}
+
 ::-webkit-scrollbar {
   width: 0; /* Remove scrollbar space */
   background: transparent; /* Optional: just make scrollbar invisible */
