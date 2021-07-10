@@ -1,4 +1,4 @@
-import React , {useRef , useState , useEffect} from 'react';
+import React , {useState , useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import { ChatEngine} from 'react-chat-engine';
 import { auth } from '../firebase';
@@ -38,7 +38,7 @@ const Chats = () => {
         // this gets the already created user
         axios.get('https://api.chatengine.io/users/me' , {
             headers: {
-                "project-id" : "576d8e92-047c-4f16-9488-f1e2a0db6e8a",
+                "project-id" : process.env.REACT_APP_CHAT_ENGINE_ID ,
                 "user-name" : user.email ,
                 "user-secret" : user.uid,
             }
@@ -59,7 +59,7 @@ const Chats = () => {
 // since we are creating a new user , we make call to chat-engine API
                     axios.post('https://api.chatengine.io/users' ,
                         formdata , 
-                        { headers: {"private-key" : "109ac909-1a06-478a-aebc-430eba64ff19"} }
+                        { headers: {"private-key" : process.env.REACT_APP_CHAT_ENGINE_KEY} }
                     )
                     .then(() => setLoading(false))
                     .catch((error) => console.log(error))
@@ -87,7 +87,7 @@ const Chats = () => {
 
             <ChatEngine
                 height = "calc(100vh - 100px)"
-                projectID ="576d8e92-047c-4f16-9488-f1e2a0db6e8a"
+                projectID = {process.env.REACT_APP_CHAT_ENGINE_ID}
                 userName = {user.email}
                 userSecret = {user.uid}
             />
