@@ -14,6 +14,7 @@ const Login = () => {
 
                 <div 
                     className = "login-button google"
+                    // onClick is a callback function 
                     onClick = {() => auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}
                 >
                     <GoogleOutlined /> Sign In with Google
